@@ -44,18 +44,48 @@ else
 fi
 
 echo ""
-echo -e "${BLUE}Starting documentation server...${NC}"
-echo ""
+echo -e "${BLUE}Finding available port...${NC}"
 
-# Check if port 8000 is available
-if lsof -Pi :8000 -sTCP:LISTEN -t >/dev/null 2>&1; then
-    echo -e "${YELLOW}⚠${NC} Port 8000 is already in use"
-    echo "Using alternative port 8001"
-    PORT=8001
-else
-    PORT=8000
+# Function to check if port is in use
+is_port_in_use() {
+    if command -v lsof &> /dev/null; then
+        lsof -Pi :$1 -sTCP:LISTEN -t >/dev/null 2>&1
+    elif command -v netstat &> /dev/null; then
+        netstat -an | grep -q ":$1.*LISTEN"
+    else
+        # Fallback: try to bind to the port
+        python3 -c "import socket; s = socket.socket(); s.bind(('127.0.0.1', $1)); s.close()" 2>/dev/null
+        return $?
+    fi
+}
+
+# Find available port starting from 8000
+PORT=8000
+MAX_PORT=8100
+PORT_FOUND=false
+
+while [ $PORT -le $MAX_PORT ]; do
+    if ! is_port_in_use $PORT; then
+        PORT_FOUND=true
+        break
+    fi
+    PORT=$((PORT + 1))
+done
+
+if [ "$PORT_FOUND" = false ]; then
+    echo -e "${RED}Error: No available ports found between 8000-8100${NC}"
+    echo "Please free up some ports or specify a custom port with:"
+    echo "mkdocs serve --dev-addr=127.0.0.1:PORT"
+    exit 1
 fi
 
+if [ $PORT -ne 8000 ]; then
+    echo -e "${YELLOW}⚠${NC} Port 8000 is in use, using port ${PORT}"
+else
+    echo -e "${GREEN}✓${NC} Using port ${PORT}"
+fi
+
+echo ""
 echo -e "${GREEN}Documentation will be available at:${NC}"
 echo -e "${BLUE}➜${NC}  http://127.0.0.1:${PORT}/"
 echo ""
@@ -65,8 +95,4 @@ echo "================================"
 echo ""
 
 # Start MkDocs server
-if [ "$PORT" = "8000" ]; then
-    mkdocs serve
-else
-    mkdocs serve --dev-addr=127.0.0.1:$PORT
-fi
+mkdocs serve --dev-addr=127.0.0.1:$PORT
