@@ -1,0 +1,3132 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tendon-Driven Robotic Hand Validation System">
+      
+      
+        <meta name="author" content="Test Bench Team">
+      
+      
+        <link rel="canonical" href="https://github.com/anandvks/test-hub/technical/theory/">
+      
+      
+        <link rel="prev" href="../../user-guide/gui-overview/">
+      
+      
+        <link rel="next" href="../platform-guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Engineering Theory - Test Bench GUI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#test-bench-theory-and-methodology" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Test Bench GUI" class="md-header__button md-logo" aria-label="Test Bench GUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Bench GUI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Engineering Theory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/anandvks/test-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anandvks/test-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/tutorial/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Technical Documentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/contributing/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../about/changelog/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Test Bench GUI" class="md-nav__button md-logo" aria-label="Test Bench GUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Test Bench GUI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/anandvks/test-hub" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    anandvks/test-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/hardware-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/gui-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Technical Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Theory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-validation-testing-is-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Validation Testing is Critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Objectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tendon-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tendon Mechanics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tendon Mechanics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#force-transmission-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Transmission Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulley-and-routing-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pulley and Routing Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bowden-cable-vs-direct-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bowden Cable vs. Direct Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tendon-tension-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendon Tension Distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-material-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Material Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Material Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tendon-material-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendon Material Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youngs-modulus-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Young's Modulus and Compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stiffness-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stiffness Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creep-and-stress-relaxation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creep and Stress Relaxation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hold-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hold Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-and-energy-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis and Energy Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-in-effects-bedding-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break-In Effects (Bedding-In)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gearbox-and-transmission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Gearbox and Transmission
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Gearbox and Transmission">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gear-reduction-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gear Reduction Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlash-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlash Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transmission Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torque-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Torque Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friction-losses-vs-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friction Losses vs. Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-motor-control-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Motor Control Theory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Motor Control Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bldc-motor-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLDC Motor Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-to-torque-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current-to-Torque Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid-control-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID Control Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motion Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-loop-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Loop Frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-force-measurement-and-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Force Measurement and Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Force Measurement and Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-cell-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Cell Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Procedure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-resolution-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Resolution and Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fingertip-force-vs-tendon-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fingertip Force vs. Tendon Force
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-control-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Control Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-test-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Test Methodology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Test Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#torqueefficiency-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Torque/Efficiency Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stiffness-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stiffness Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-hold-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Hold Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endurance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endurance Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-validation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Validation Criteria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Validation Criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-report-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Report Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-quick-reference-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: Quick Reference Equations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test-protocols/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Protocols
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-validation-testing-is-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Validation Testing is Critical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Objectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tendon-mechanics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Tendon Mechanics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Tendon Mechanics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#force-transmission-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Transmission Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulley-and-routing-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pulley and Routing Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bowden-cable-vs-direct-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bowden Cable vs. Direct Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tendon-tension-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendon Tension Distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-material-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Material Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Material Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tendon-material-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendon Material Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youngs-modulus-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Young's Modulus and Compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stiffness-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stiffness Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creep-and-stress-relaxation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creep and Stress Relaxation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hold-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hold Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-and-energy-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis and Energy Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-in-effects-bedding-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break-In Effects (Bedding-In)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gearbox-and-transmission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Gearbox and Transmission
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Gearbox and Transmission">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gear-reduction-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gear Reduction Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backlash-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backlash Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transmission-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transmission Efficiency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torque-test-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Torque Test Theory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#friction-losses-vs-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friction Losses vs. Velocity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-motor-control-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Motor Control Theory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Motor Control Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bldc-motor-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLDC Motor Operation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-to-torque-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current-to-Torque Relationship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid-control-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID Control Fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motion Profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-loop-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Loop Frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-force-measurement-and-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Force Measurement and Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Force Measurement and Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-cell-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Load Cell Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calibration-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration Procedure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-resolution-and-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Resolution and Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fingertip-force-vs-tendon-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fingertip Force vs. Tendon Force
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#force-control-accuracy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Force Control Accuracy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-test-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Test Methodology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Test Methodology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#torqueefficiency-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Torque/Efficiency Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stiffness-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stiffness Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-hold-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Hold Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endurance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endurance Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-validation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Validation Criteria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Validation Criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Targets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safety-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safety Limits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-report-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Report Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failure-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-quick-reference-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: Quick Reference Equations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="test-bench-theory-and-methodology">Test Bench Theory and Methodology</h1>
+<p><strong>Engineering-Level Documentation for Tendon-Driven Robotic Hand Validation</strong></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-tendon-mechanics">Tendon Mechanics</a></li>
+<li><a href="#3-material-properties">Material Properties</a></li>
+<li><a href="#4-gearbox-and-transmission">Gearbox and Transmission</a></li>
+<li><a href="#5-motor-control-theory">Motor Control Theory</a></li>
+<li><a href="#6-force-measurement-and-calibration">Force Measurement and Calibration</a></li>
+<li><a href="#7-test-methodology">Test Methodology</a></li>
+<li><a href="#8-validation-criteria">Validation Criteria</a></li>
+</ol>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="overview">Overview</h3>
+<p>Tendon-driven robotic hands offer significant advantages over traditional rigid-link mechanisms: reduced weight at the end effector, improved dexterity through underactuation, and safer human-robot interaction due to inherent compliance. However, these benefits come with unique challenges in force transmission, position accuracy, and long-term reliability.</p>
+<p>This test bench validates the performance of a tendon-driven finger mechanism powered by a Maxon ECX TORQUE 22 L motor with GPX 22 HP gearbox (231:1 reduction ratio), targeting <strong>5-6 kg static hold capability</strong> at the fingertip.</p>
+<h3 id="why-validation-testing-is-critical">Why Validation Testing is Critical</h3>
+<p>Unlike rigid mechanisms where kinematics and dynamics are well-defined, cable-driven systems exhibit:</p>
+<ul>
+<li><strong>Hysteresis</strong>: Backlash from gearbox play and tendon elasticity causes different positions when approaching from opposite directions</li>
+<li><strong>Creep</strong>: Viscoelastic tendon materials elongate under sustained load, reducing force over time</li>
+<li><strong>Friction</strong>: Routing paths through pulleys and conduits cause energy loss and position-dependent resistance</li>
+<li><strong>Compliance</strong>: Tendon stretch and gearbox deflection reduce stiffness, affecting force control accuracy</li>
+</ul>
+<p>These non-idealities cannot be predicted from datasheets alone—empirical validation is essential.</p>
+<h3 id="testing-objectives">Testing Objectives</h3>
+<p>This test bench quantifies:</p>
+<ol>
+<li><strong>Maximum force capability</strong>: Can the system achieve 1.2 kg per finger (6 kg total for 5 fingers)?</li>
+<li><strong>Force stability</strong>: Does creep cause unacceptable force degradation during sustained grips?</li>
+<li><strong>Position accuracy</strong>: What is the bidirectional repeatability error (hysteresis)?</li>
+<li><strong>Transmission efficiency</strong>: How much motor power is lost to friction and gearbox inefficiency?</li>
+<li><strong>Long-term durability</strong>: Does performance degrade over 10,000 flex-extend cycles?</li>
+</ol>
+<h3 id="success-criteria">Success Criteria</h3>
+<ul>
+<li><strong>Static hold</strong>: 50-60 N fingertip force sustained for 30 minutes with &lt; 2% force drop</li>
+<li><strong>Efficiency</strong>: &gt; 40% mechanical-to-electrical power conversion at nominal torque</li>
+<li><strong>Backlash</strong>: &lt; 5° joint angle error (&lt; 200 encoder counts)</li>
+<li><strong>Stiffness</strong>: &gt; 10 N/mm to minimize compliance</li>
+<li><strong>Endurance</strong>: &lt; 10% efficiency loss after 10,000 cycles</li>
+</ul>
+<hr />
+<h2 id="2-tendon-mechanics">2. Tendon Mechanics</h2>
+<h3 id="force-transmission-fundamentals">Force Transmission Fundamentals</h3>
+<p>In a cable-driven system, motor torque <span class="arithmatex">\(\tau_m\)</span> is transmitted to fingertip force <span class="arithmatex">\(F_{tip}\)</span> through:</p>
+<div class="arithmatex">\[F_{tip} = \frac{\tau_m \cdot r_{spool}}{r_{joint} \cdot GR \cdot \eta}\]</div>
+<p>Where:
+- <span class="arithmatex">\(\tau_m\)</span> = Motor torque (mNm)
+- <span class="arithmatex">\(r_{spool}\)</span> = Spool radius at motor (mm)
+- <span class="arithmatex">\(r_{joint}\)</span> = Moment arm at finger joint (mm)
+- <span class="arithmatex">\(GR\)</span> = Gear reduction ratio (231:1 for GPX 22 HP)
+- <span class="arithmatex">\(\eta\)</span> = Overall transmission efficiency (typically 0.4-0.6)</p>
+<p><strong>Example</strong>: With <span class="arithmatex">\(r_{spool} = 10\)</span> mm, <span class="arithmatex">\(r_{joint} = 15\)</span> mm, <span class="arithmatex">\(GR = 231\)</span>, <span class="arithmatex">\(\eta = 0.5\)</span>:</p>
+<div class="arithmatex">\[F_{tip} = \frac{\tau_m \cdot 10}{15 \cdot 231 \cdot 0.5} = \frac{\tau_m}{173.25}\]</div>
+<p>To achieve 60 N (6 kg) fingertip force:</p>
+<div class="arithmatex">\[\tau_m = 60 \cdot 173.25 = 10,395 \text{ mNm} \approx 10.4 \text{ Nm}\]</div>
+<p>This is within the ECX TORQUE 22 L continuous torque rating (~14 mNm, scaled by gearbox).</p>
+<h3 id="pulley-and-routing-efficiency">Pulley and Routing Efficiency</h3>
+<p><strong>Capstan Equation</strong>: When a cable wraps around a pulley through angle <span class="arithmatex">\(\theta\)</span> with friction coefficient <span class="arithmatex">\(\mu\)</span>:</p>
+<div class="arithmatex">\[\frac{T_{out}}{T_{in}} = e^{-\mu \theta}\]</div>
+<p>For a single 180° pulley (<span class="arithmatex">\(\theta = \pi\)</span>) with <span class="arithmatex">\(\mu = 0.15\)</span> (steel cable on aluminum pulley):</p>
+<div class="arithmatex">\[\frac{T_{out}}{T_{in}} = e^{-0.15 \pi} = 0.629\]</div>
+<p>This means <strong>37% force loss</strong> per pulley! For a 3-pulley routing path:</p>
+<div class="arithmatex">\[\eta_{routing} = (0.629)^3 = 0.249 \text{ (25% efficiency)}\]</div>
+<p><strong>Practical Implications</strong>:
+- Minimize pulley count
+- Use low-friction materials (PTFE-lined conduits, ball-bearing pulleys)
+- Increase pulley diameter to reduce wrap angle</p>
+<h3 id="bowden-cable-vs-direct-routing">Bowden Cable vs. Direct Routing</h3>
+<p><strong>Bowden Cable</strong> (tendon in flexible conduit):
+- <strong>Advantages</strong>: Routes through complex geometries, protects tendon
+- <strong>Disadvantages</strong>: High friction (<span class="arithmatex">\(\mu \approx 0.2-0.3\)</span>), hysteresis from conduit compliance</p>
+<p><strong>Direct Routing</strong> (tendon over pulleys):
+- <strong>Advantages</strong>: Lower friction (<span class="arithmatex">\(\mu \approx 0.05-0.15\)</span>), less hysteresis
+- <strong>Disadvantages</strong>: Requires clear line-of-sight paths, tendon wear at pulleys</p>
+<p>This test bench uses <strong>direct routing</strong> for maximum efficiency.</p>
+<h3 id="tendon-tension-distribution">Tendon Tension Distribution</h3>
+<p>For a multi-joint finger with <span class="arithmatex">\(n\)</span> tendons controlling <span class="arithmatex">\(m\)</span> joints (<span class="arithmatex">\(m \geq n\)</span> for underactuation), the relationship between tendon tensions <span class="arithmatex">\(\mathbf{T}\)</span> and joint torques <span class="arithmatex">\(\boldsymbol{\tau}\)</span> is:</p>
+<div class="arithmatex">\[\boldsymbol{\tau} = \mathbf{R} \mathbf{T}\]</div>
+<p>Where <span class="arithmatex">\(\mathbf{R}\)</span> is the moment arm matrix. For a 2-tendon antagonistic pair:</p>
+<div class="arithmatex">\[\mathbf{R} = \begin{bmatrix} r_1 &amp; -r_2 \\ 0 &amp; r_2 \end{bmatrix}\]</div>
+<p>Solving for tendon tensions:</p>
+<div class="arithmatex">\[\mathbf{T} = \mathbf{R}^{-1} \boldsymbol{\tau}\]</div>
+<p><strong>Force-doubling mechanisms</strong> (routing both flexor and extensor through a single joint) can double the effective force but introduce additional friction.</p>
+<hr />
+<h2 id="3-material-properties">3. Material Properties</h2>
+<h3 id="tendon-material-selection">Tendon Material Selection</h3>
+<p>Common tendon materials for robotic hands:</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Young's Modulus (GPa)</th>
+<th>Ultimate Strength (GPa)</th>
+<th>Creep</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Spectra</strong> (UHMWPE)</td>
+<td>100-120</td>
+<td>3-4</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Dyneema</strong> (UHMWPE)</td>
+<td>100-150</td>
+<td>3-4</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Steel cable</strong> (7×19)</td>
+<td>190-210</td>
+<td>1.5-2</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Kevlar</strong></td>
+<td>70-120</td>
+<td>3-4</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Nylon</strong></td>
+<td>2-4</td>
+<td>0.07-0.09</td>
+<td>Very High</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<p>This project uses <strong>Spectra fiber</strong> for high strength-to-weight ratio, with the caveat of higher creep.</p>
+<h3 id="youngs-modulus-and-compliance">Young's Modulus and Compliance</h3>
+<p>Tendon elongation <span class="arithmatex">\(\Delta L\)</span> under force <span class="arithmatex">\(F\)</span> is governed by:</p>
+<div class="arithmatex">\[\Delta L = \frac{F \cdot L}{E \cdot A}\]</div>
+<p>Where:
+- <span class="arithmatex">\(L\)</span> = Original tendon length (mm)
+- <span class="arithmatex">\(E\)</span> = Young's modulus (MPa)
+- <span class="arithmatex">\(A\)</span> = Cross-sectional area (mm²)</p>
+<p><strong>Example</strong>: Spectra tendon (Ø1 mm, <span class="arithmatex">\(A = 0.785\)</span> mm², <span class="arithmatex">\(E = 100\)</span> GPa = 100,000 MPa) routed 300 mm with 50 N tension:</p>
+<div class="arithmatex">\[\Delta L = \frac{50 \cdot 300}{100,000 \cdot 0.785} = 0.191 \text{ mm}\]</div>
+<p>This 0.2 mm elongation translates to <strong>position error</strong> and reduced system stiffness.</p>
+<h3 id="stiffness-test-theory">Stiffness Test Theory</h3>
+<p>The <strong>Stiffness Test</strong> measures effective tendon/system stiffness by:</p>
+<ol>
+<li>Locking motor at position <span class="arithmatex">\(x_0\)</span></li>
+<li>Applying external force <span class="arithmatex">\(F_{ext}\)</span></li>
+<li>Measuring position displacement <span class="arithmatex">\(\Delta x\)</span></li>
+<li>Calculating stiffness: <span class="arithmatex">\(k = F_{ext} / \Delta x\)</span> (N/mm)</li>
+</ol>
+<p>The measured stiffness <span class="arithmatex">\(k_{system}\)</span> includes contributions from:</p>
+<div class="arithmatex">\[\frac{1}{k_{system}} = \frac{1}{k_{tendon}} + \frac{1}{k_{gearbox}} + \frac{1}{k_{mounting}}\]</div>
+<p>Where:
+- <span class="arithmatex">\(k_{tendon} = E \cdot A / L\)</span> (tendon compliance)
+- <span class="arithmatex">\(k_{gearbox}\)</span> = gearbox torsional stiffness (reflected to output)
+- <span class="arithmatex">\(k_{mounting}\)</span> = structural compliance</p>
+<p>Target: <span class="arithmatex">\(k_{system} &gt; 10\)</span> N/mm for adequate force control.</p>
+<h3 id="creep-and-stress-relaxation">Creep and Stress Relaxation</h3>
+<p>Viscoelastic materials exhibit time-dependent deformation under constant stress (<strong>creep</strong>) or stress decay under constant strain (<strong>stress relaxation</strong>).</p>
+<p><strong>Kelvin-Voigt Model</strong> (creep):</p>
+<div class="arithmatex">\[\epsilon(t) = \frac{\sigma}{E} \left(1 - e^{-t/\tau}\right)\]</div>
+<p>Where <span class="arithmatex">\(\tau = \eta / E\)</span> is the relaxation time constant (<span class="arithmatex">\(\eta\)</span> = viscosity).</p>
+<p>For Spectra fiber under 50 N load, typical creep rates are 1-3% over 30 minutes.</p>
+<h3 id="hold-test-theory">Hold Test Theory</h3>
+<p>The <strong>Static Hold Test</strong> validates creep behavior by:</p>
+<ol>
+<li>Commanding constant force <span class="arithmatex">\(F_{target}\)</span></li>
+<li>Monitoring actual force <span class="arithmatex">\(F(t)\)</span> for 30 minutes</li>
+<li>Calculating force decay: <span class="arithmatex">\(\Delta F = F_0 - F_{30min}\)</span></li>
+<li>Verifying: <span class="arithmatex">\(\Delta F / F_0 &lt; 2\%\)</span> (acceptance criterion)</li>
+</ol>
+<p>If creep exceeds limits, compensate by:
+- Pre-stretching tendons (bedding-in)
+- Active force feedback control
+- Material substitution (steel cable)</p>
+<h3 id="hysteresis-and-energy-loss">Hysteresis and Energy Loss</h3>
+<p>Hysteresis (different loading/unloading paths) arises from:</p>
+<ol>
+<li><strong>Tendon internal friction</strong>: Fiber-fiber sliding</li>
+<li><strong>Gearbox backlash</strong>: Gear tooth clearance</li>
+<li><strong>Pulley friction</strong>: Static vs. kinetic friction transition</li>
+</ol>
+<p>Energy dissipated per cycle:</p>
+<div class="arithmatex">\[E_{loss} = \oint F \, dx = \text{Area of hysteresis loop}\]</div>
+<p><strong>Hysteresis test</strong> quantifies this by approaching positions from both directions.</p>
+<h3 id="break-in-effects-bedding-in">Break-In Effects (Bedding-In)</h3>
+<p>New tendons exhibit higher initial creep and compliance due to:
+- Fiber alignment and densification
+- Seating into pulleys/guides
+- Initial plastic deformation</p>
+<p><strong>Break-In Cycling Test</strong> runs 100-1000 cycles to stabilize properties before validation testing.</p>
+<hr />
+<h2 id="4-gearbox-and-transmission">4. Gearbox and Transmission</h2>
+<h3 id="gear-reduction-fundamentals">Gear Reduction Fundamentals</h3>
+<p>The Maxon GPX 22 HP gearbox provides:
+- <strong>Reduction ratio</strong>: 231:1
+- <strong>Efficiency</strong>: ~40-60% (typical for high-reduction planetary)
+- <strong>Backlash</strong>: &lt; 1.5° at output (manufacturer spec)</p>
+<p>Torque amplification:</p>
+<div class="arithmatex">\[\tau_{out} = \tau_{motor} \cdot GR \cdot \eta_{gearbox}\]</div>
+<p>With <span class="arithmatex">\(GR = 231\)</span> and <span class="arithmatex">\(\eta = 0.5\)</span>:</p>
+<div class="arithmatex">\[\tau_{out} = \tau_{motor} \cdot 115.5\]</div>
+<h3 id="backlash-sources">Backlash Sources</h3>
+<p><strong>1. Gear Tooth Clearance</strong>:</p>
+<p>Gear backlash <span class="arithmatex">\(\theta_{backlash}\)</span> (in degrees) propagates to output position error:</p>
+<div class="arithmatex">\[\Delta x_{backlash} = \theta_{backlash} \cdot r_{spool} \cdot \frac{\pi}{180}\]</div>
+<p>For 1.5° backlash and <span class="arithmatex">\(r_{spool} = 10\)</span> mm:</p>
+<div class="arithmatex">\[\Delta x_{backlash} = 1.5 \cdot 10 \cdot \frac{\pi}{180} = 0.262 \text{ mm}\]</div>
+<p><strong>2. Tendon Stretch</strong>:</p>
+<p>From Section 3, <span class="arithmatex">\(\Delta L = 0.191\)</span> mm for 50 N load.</p>
+<p><strong>Total Hysteresis</strong> (gearbox + tendon):</p>
+<div class="arithmatex">\[\Delta x_{total} = 0.262 + 0.191 = 0.453 \text{ mm}\]</div>
+<p>This corresponds to ~<strong>3°</strong> joint angle error for typical finger kinematics.</p>
+<h3 id="hysteresis-test-theory">Hysteresis Test Theory</h3>
+<p>The <strong>Hysteresis Loop Test</strong> measures bidirectional positioning error:</p>
+<ol>
+<li>Approach target position <span class="arithmatex">\(x_i\)</span> from below: <span class="arithmatex">\(x_{below} \rightarrow x_i\)</span></li>
+<li>Record actual position: <span class="arithmatex">\(x_i^{below}\)</span></li>
+<li>Approach from above: <span class="arithmatex">\(x_{above} \rightarrow x_i\)</span></li>
+<li>Record actual position: <span class="arithmatex">\(x_i^{above}\)</span></li>
+<li>Calculate backlash: <span class="arithmatex">\(\Delta x_i = |x_i^{above} - x_i^{below}|\)</span></li>
+</ol>
+<p>Repeat for <span class="arithmatex">\(n\)</span> positions (typically 10) across range of motion.</p>
+<p><strong>Acceptance</strong>: <span class="arithmatex">\(\max(\Delta x_i) &lt; 200\)</span> encoder counts (~5° joint angle).</p>
+<h3 id="transmission-efficiency">Transmission Efficiency</h3>
+<p>Overall efficiency is the product of gearbox and routing efficiencies:</p>
+<div class="arithmatex">\[\eta_{total} = \eta_{gearbox} \cdot \eta_{routing}\]</div>
+<p>For GPX 22 HP (<span class="arithmatex">\(\eta_{gb} = 0.5\)</span>) with 3-pulley routing (<span class="arithmatex">\(\eta_{route} = 0.25\)</span>):</p>
+<div class="arithmatex">\[\eta_{total} = 0.5 \cdot 0.25 = 0.125 \text{ (12.5%)}\]</div>
+<p>This is pessimistic—actual routing efficiency with ball-bearing pulleys is ~70%, giving:</p>
+<div class="arithmatex">\[\eta_{total} = 0.5 \cdot 0.7 = 0.35 \text{ (35%)}\]</div>
+<h3 id="torque-test-theory">Torque Test Theory</h3>
+<p>The <strong>Torque/Efficiency Test</strong> measures <span class="arithmatex">\(\eta_{total}\)</span> empirically:</p>
+<ol>
+<li>Command motor torque <span class="arithmatex">\(\tau_{cmd}\)</span> (via current setpoint)</li>
+<li>Measure electrical power: <span class="arithmatex">\(P_{elec} = V_{motor} \cdot I_{motor}\)</span></li>
+<li>Measure mechanical power: <span class="arithmatex">\(P_{mech} = F_{tip} \cdot v_{tip}\)</span></li>
+<li>Calculate efficiency: <span class="arithmatex">\(\eta = P_{mech} / P_{elec}\)</span></li>
+</ol>
+<p>Repeat across torque range (0 - max torque) to map <span class="arithmatex">\(\eta(\tau)\)</span>.</p>
+<p><strong>Expected behavior</strong>:
+- Low torque: Low efficiency (friction dominates)
+- Mid torque: Peak efficiency (~40-50%)
+- High torque: Decreasing efficiency (higher friction with load)</p>
+<h3 id="friction-losses-vs-velocity">Friction Losses vs. Velocity</h3>
+<p>Friction transitions from <strong>static</strong> (Coulomb) to <strong>kinetic</strong> (velocity-dependent):</p>
+<div class="arithmatex">\[F_{friction} = F_{static} \cdot \text{sgn}(v) + b \cdot v\]</div>
+<p>Where:
+- <span class="arithmatex">\(F_{static}\)</span> = Static friction force
+- <span class="arithmatex">\(b\)</span> = Viscous damping coefficient
+- <span class="arithmatex">\(v\)</span> = Velocity</p>
+<p>At high speeds, viscous losses dominate; at low speeds, Coulomb friction dominates. This causes efficiency to vary with operating point.</p>
+<hr />
+<h2 id="5-motor-control-theory">5. Motor Control Theory</h2>
+<h3 id="bldc-motor-operation">BLDC Motor Operation</h3>
+<p>The Maxon ECX TORQUE 22 L is a brushless DC (BLDC) motor with:
+- <strong>Torque constant</strong>: <span class="arithmatex">\(K_t = 14.4\)</span> mNm/A (from datasheet)
+- <strong>Continuous current</strong>: 1.04 A
+- <strong>Peak current</strong>: 5.2 A (short duration)</p>
+<h3 id="current-to-torque-relationship">Current-to-Torque Relationship</h3>
+<p>Motor torque is directly proportional to current:</p>
+<div class="arithmatex">\[\tau_m = K_t \cdot I_motor\]</div>
+<p>For maximum continuous torque:</p>
+<div class="arithmatex">\[\tau_{cont} = 14.4 \cdot 1.04 = 14.976 \text{ mNm}\]</div>
+<p>After gearbox (231:1, 50% efficiency):</p>
+<div class="arithmatex">\[\tau_{out} = 14.976 \cdot 231 \cdot 0.5 = 1,730 \text{ mNm} = 1.73 \text{ Nm}\]</div>
+<p>This output torque, through a 10 mm spool, provides:</p>
+<div class="arithmatex">\[F_{spool} = \frac{1,730}{10} = 173 \text{ N}\]</div>
+<p>Accounting for routing losses (70% efficiency):</p>
+<div class="arithmatex">\[F_{tip} = 173 \cdot 0.7 = 121 \text{ N} \approx 12 \text{ kg}\]</div>
+<p>This <strong>exceeds the 6 kg target</strong> with safety margin.</p>
+<h3 id="pid-control-fundamentals">PID Control Fundamentals</h3>
+<p>A PID controller adjusts motor command <span class="arithmatex">\(u(t)\)</span> based on position error <span class="arithmatex">\(e(t) = x_{target} - x_{actual}\)</span>:</p>
+<div class="arithmatex">\[u(t) = K_p \cdot e(t) + K_i \int e(t) \, dt + K_d \frac{de(t)}{dt}\]</div>
+<p>Where:
+- <span class="arithmatex">\(K_p\)</span> = Proportional gain (immediate response)
+- <span class="arithmatex">\(K_i\)</span> = Integral gain (eliminates steady-state error)
+- <span class="arithmatex">\(K_d\)</span> = Derivative gain (damping, reduces overshoot)</p>
+<p><strong>Tuning guidelines</strong> (Ziegler-Nichols method):
+1. Set <span class="arithmatex">\(K_i = K_d = 0\)</span>
+2. Increase <span class="arithmatex">\(K_p\)</span> until oscillation occurs at critical gain <span class="arithmatex">\(K_{p,crit}\)</span>
+3. Measure oscillation period <span class="arithmatex">\(T_{crit}\)</span>
+4. Calculate PID gains:
+   - <span class="arithmatex">\(K_p = 0.6 \cdot K_{p,crit}\)</span>
+   - <span class="arithmatex">\(K_i = 2 K_p / T_{crit}\)</span>
+   - <span class="arithmatex">\(K_d = K_p \cdot T_{crit} / 8\)</span></p>
+<p><strong>Stability criteria</strong>: Closed-loop system is stable if all poles of characteristic equation are in left-half complex plane.</p>
+<h3 id="motion-profiles">Motion Profiles</h3>
+<p><strong>Trapezoidal profile</strong> (constant acceleration):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>velocity
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ^
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  |    /‾‾‾‾\
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  |   /      \
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  |  /        \
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  | /          \
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  +--------------&gt; time
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>     accel cruise decel
+</code></pre></div>
+<p><strong>S-curve profile</strong> (jerk-limited):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>velocity
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  ^
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  |     ,‾‾‾‾‾.
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  |   ,&#39;       `.
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  |  /           \
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  | /             \
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  +----------------&gt; time
+</code></pre></div>
+<p>Jerk limiting <span class="arithmatex">\(J\)</span> (rate of acceleration change) reduces mechanical stress and vibration:</p>
+<div class="arithmatex">\[J = \frac{da}{dt} \quad \text{(RPM/s²)}\]</div>
+<p>Typical values: <span class="arithmatex">\(J = 10,000 - 100,000\)</span> RPM/s²</p>
+<h3 id="control-loop-frequency">Control Loop Frequency</h3>
+<p>For stable position control of a gearbox system:</p>
+<div class="arithmatex">\[f_{control} &gt; 10 \cdot f_{mechanical}\]</div>
+<p>Where <span class="arithmatex">\(f_{mechanical}\)</span> is the first mechanical resonance (typically 50-100 Hz for high-ratio planetary gearboxes).</p>
+<p><strong>Recommended</strong>: <span class="arithmatex">\(f_{control} \geq 1\)</span> kHz</p>
+<p>The Teensy 4.1 (600 MHz ARM Cortex-M7) easily achieves this.</p>
+<hr />
+<h2 id="6-force-measurement-and-calibration">6. Force Measurement and Calibration</h2>
+<h3 id="load-cell-principles">Load Cell Principles</h3>
+<p><strong>Strain Gauge Load Cells</strong> use four strain gauges in a Wheatstone bridge configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>      R1
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  +---/\/\---+
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  |          |
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> Vex        R2
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  |         /\/\
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  |          |
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  +----+-----+---- Vout+
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>       |
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>      R3
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>      /\/\
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>       |
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>  +----+-----+---- Vout-
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  |          |
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a> GND        R4
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>  |         /\/\
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>  +---/\/\---+
+</code></pre></div>
+<p>Output voltage:</p>
+<div class="arithmatex">\[V_{out} = V_{ex} \cdot \frac{R_1 \cdot R_3 - R_2 \cdot R_4}{(R_1 + R_2)(R_3 + R_4)}\]</div>
+<p>Under load, resistances change by <span class="arithmatex">\(\Delta R \propto\)</span> strain.</p>
+<h3 id="calibration-procedure">Calibration Procedure</h3>
+<p><strong>Two-point calibration</strong>:</p>
+<ol>
+<li><strong>Zero offset</strong>: With no load, record ADC reading <span class="arithmatex">\(ADC_0\)</span></li>
+<li><strong>Calibration point</strong>: Apply known weight <span class="arithmatex">\(W_{known}\)</span> (e.g., 1 kg = 9.81 N), record <span class="arithmatex">\(ADC_1\)</span></li>
+<li>Calculate calibration factor:</li>
+</ol>
+<div class="arithmatex">\[K_{calib} = \frac{W_{known}}{ADC_1 - ADC_0}\]</div>
+<ol>
+<li>For any reading <span class="arithmatex">\(ADC_x\)</span>:</li>
+</ol>
+<div class="arithmatex">\[F = (ADC_x - ADC_0) \cdot K_{calib}\]</div>
+<p><strong>Multi-point calibration</strong> (higher accuracy):</p>
+<p>Perform linear regression on <span class="arithmatex">\((ADC_i, W_i)\)</span> pairs to find best-fit <span class="arithmatex">\(K_{calib}\)</span> and <span class="arithmatex">\(ADC_0\)</span>.</p>
+<h3 id="force-resolution-and-accuracy">Force Resolution and Accuracy</h3>
+<p><strong>HX711 ADC</strong> (24-bit):
+- <strong>Resolution</strong>: <span class="arithmatex">\(2^{24} = 16,777,216\)</span> counts
+- <strong>Range</strong>: 0-20 kg (0-200 N)
+- <strong>LSB</strong>: <span class="arithmatex">\(200 / 16,777,216 = 0.000012\)</span> N ≈ <strong>12 µN</strong></p>
+<p>Practical resolution is limited by noise (~100 µN).</p>
+<p><strong>ADS1256</strong> (24-bit, higher quality):
+- Better SNR: ~0.01 N practical resolution</p>
+<h3 id="fingertip-force-vs-tendon-force">Fingertip Force vs. Tendon Force</h3>
+<p>For a simple finger joint:</p>
+<div class="arithmatex">\[F_{tip} = \frac{F_{tendon} \cdot r_{tendon}}{r_{fingertip}}\]</div>
+<p>Where:
+- <span class="arithmatex">\(r_{tendon}\)</span> = Tendon moment arm at joint (~15 mm)
+- <span class="arithmatex">\(r_{fingertip}\)</span> = Distance from joint to fingertip (~40 mm)</p>
+<p><strong>Mechanical advantage</strong>:</p>
+<div class="arithmatex">\[MA = \frac{r_{tendon}}{r_{fingertip}} = \frac{15}{40} = 0.375\]</div>
+<p>For 60 N fingertip force:</p>
+<div class="arithmatex">\[F_{tendon} = \frac{60}{0.375} = 160 \text{ N}\]</div>
+<p>This is <strong>within the 200 N load cell range</strong>.</p>
+<h3 id="force-control-accuracy">Force Control Accuracy</h3>
+<p>Closed-loop force control accuracy is limited by:</p>
+<ol>
+<li><strong>Sensor resolution</strong>: ±0.01 N (ADS1256)</li>
+<li><strong>Tendon compliance</strong>: <span class="arithmatex">\(\Delta F = k_{tendon} \cdot \Delta x\)</span></li>
+<li><strong>Control loop bandwidth</strong>: Faster loop → better rejection of disturbances</li>
+</ol>
+<p>Target: ±1 N (±10%) for 10 N grasp forces.</p>
+<hr />
+<h2 id="7-test-methodology">7. Test Methodology</h2>
+<h3 id="torqueefficiency-test">Torque/Efficiency Test</h3>
+<p><strong>Objective</strong>: Map transmission efficiency <span class="arithmatex">\(\eta(\tau)\)</span> across operating range.</p>
+<p><strong>Procedure</strong>:
+1. Ramp motor torque from <span class="arithmatex">\(\tau_{min}\)</span> to <span class="arithmatex">\(\tau_{max}\)</span> in <span class="arithmatex">\(n\)</span> steps (typically 10-20)
+2. At each step <span class="arithmatex">\(i\)</span>:
+   - Command torque <span class="arithmatex">\(\tau_i\)</span> (via current setpoint: <span class="arithmatex">\(I_i = \tau_i / K_t\)</span>)
+   - Wait settling time (default 2 s)
+   - Measure:
+     - Motor current <span class="arithmatex">\(I_{actual}\)</span>
+     - Motor voltage <span class="arithmatex">\(V_{motor}\)</span> (assume 24 V supply)
+     - Tendon force <span class="arithmatex">\(F_{tendon}\)</span>
+     - Fingertip force <span class="arithmatex">\(F_{tip}\)</span>
+     - Position <span class="arithmatex">\(x\)</span> (encoder counts)
+     - Velocity <span class="arithmatex">\(v\)</span> (RPM)
+3. Calculate efficiency:</p>
+<div class="arithmatex">\[\eta_i = \frac{F_{tip,i} \cdot v_{tip,i}}{V_{motor} \cdot I_{actual,i}}\]</div>
+<p>Where <span class="arithmatex">\(v_{tip} = v \cdot r_{spool} / GR\)</span> (convert RPM to linear velocity).</p>
+<p><strong>Expected results</strong>:
+- Efficiency peaks at mid-torque (~40-50%)
+- Low torque: friction dominates → low efficiency
+- High torque: increased friction → decreasing efficiency</p>
+<p><strong>Hysteresis measurement</strong> (optional):
+- Ramp torque up, then ramp down
+- Plot <span class="arithmatex">\(F_{up}(\tau)\)</span> vs. <span class="arithmatex">\(F_{down}(\tau)\)</span>
+- Hysteresis area = energy loss per cycle</p>
+<h3 id="hysteresis-test">Hysteresis Test</h3>
+<p><strong>Objective</strong>: Quantify backlash from gearbox and tendon compliance.</p>
+<p><strong>Procedure</strong>:
+1. Define test positions: <span class="arithmatex">\(x_1, x_2, ..., x_n\)</span> (linearly spaced from <span class="arithmatex">\(x_{min}\)</span> to <span class="arithmatex">\(x_{max}\)</span>)
+2. Set approach offset <span class="arithmatex">\(\Delta x\)</span> (e.g., 500 counts)
+3. For each position <span class="arithmatex">\(x_i\)</span>:
+   - <strong>Approach from below</strong>:
+     - Move to <span class="arithmatex">\(x_i - \Delta x\)</span>
+     - Wait settling time
+     - Move to <span class="arithmatex">\(x_i\)</span>
+     - Wait settling time
+     - Record actual position <span class="arithmatex">\(x_i^{below}\)</span>
+   - <strong>Approach from above</strong>:
+     - Move to <span class="arithmatex">\(x_i + \Delta x\)</span>
+     - Wait settling time
+     - Move to <span class="arithmatex">\(x_i\)</span>
+     - Wait settling time
+     - Record actual position <span class="arithmatex">\(x_i^{above}\)</span>
+   - Calculate backlash: <span class="arithmatex">\(\Delta x_i = |x_i^{above} - x_i^{below}|\)</span></p>
+<p><strong>Metrics</strong>:
+- Average backlash: <span class="arithmatex">\(\bar{\Delta x} = \frac{1}{n} \sum_i \Delta x_i\)</span>
+- Maximum backlash: <span class="arithmatex">\(\max(\Delta x_i)\)</span>
+- Position-dependence: Plot <span class="arithmatex">\(\Delta x_i\)</span> vs. <span class="arithmatex">\(x_i\)</span></p>
+<p><strong>Acceptance</strong>: <span class="arithmatex">\(\max(\Delta x_i) &lt; 200\)</span> counts (~5° joint angle).</p>
+<h3 id="stiffness-test">Stiffness Test</h3>
+<p><strong>Objective</strong>: Measure system stiffness <span class="arithmatex">\(k = F / \Delta x\)</span>.</p>
+<p><strong>Procedure</strong>:
+1. Lock motor at test position <span class="arithmatex">\(x_0\)</span> (position control mode, high PID gains)
+2. Manually apply external force <span class="arithmatex">\(F_{ext}\)</span> to fingertip (or use calibrated spring)
+3. Record:
+   - Applied force <span class="arithmatex">\(F_{ext}\)</span> (from tip load cell)
+   - Position displacement <span class="arithmatex">\(\Delta x = x_{actual} - x_0\)</span>
+4. Calculate stiffness:</p>
+<div class="arithmatex">\[k = \frac{F_{ext}}{\Delta x} \quad \text{(N/mm, assuming counts ≈ mm)}\]</div>
+<p><strong>Expected</strong>: <span class="arithmatex">\(k &gt; 10\)</span> N/mm for adequate force control.</p>
+<p><strong>Note</strong>: Higher stiffness requires:
+- Stiffer tendon material (steel cable)
+- Shorter tendon routing (reduce <span class="arithmatex">\(L\)</span> in <span class="arithmatex">\(k = EA/L\)</span>)
+- Stiffer gearbox (lower backlash)</p>
+<h3 id="static-hold-test">Static Hold Test</h3>
+<p><strong>Objective</strong>: Validate sustained force capability and monitor creep.</p>
+<p><strong>Procedure</strong>:
+1. Command constant fingertip force <span class="arithmatex">\(F_{target}\)</span> (default 11.8 N = 1.2 kg)
+   - Convert to tendon force: <span class="arithmatex">\(F_{tendon} = F_{target} / MA\)</span>
+   - Convert to motor torque: <span class="arithmatex">\(\tau = F_{tendon} \cdot r_{spool}\)</span>
+   - Convert to current: <span class="arithmatex">\(I = \tau / K_t\)</span>
+2. Hold for duration <span class="arithmatex">\(t_{hold}\)</span> (typically 30 min)
+3. Sample sensors at interval <span class="arithmatex">\(\Delta t\)</span> (default 1 s)
+4. Monitor:
+   - Actual force <span class="arithmatex">\(F(t)\)</span> (both tendon and tip)
+   - Position drift <span class="arithmatex">\(\Delta x(t) = x(t) - x_0\)</span>
+   - Motor current <span class="arithmatex">\(I(t)\)</span>
+   - Temperature <span class="arithmatex">\(T(t)\)</span> (if available)
+5. Detect failures:
+   - Force error: <span class="arithmatex">\(|F(t) - F_{target}| / F_{target} &gt; 10\%\)</span>
+   - Excessive drift: <span class="arithmatex">\(|\Delta x(t)| &gt; 100\)</span> counts</p>
+<p><strong>Metrics</strong>:
+- Force stability: <span class="arithmatex">\(\sigma_F / \bar{F}\)</span> (coefficient of variation)
+- Creep rate: <span class="arithmatex">\((F_0 - F_{30min}) / F_0\)</span> (should be &lt; 2%)
+- Maximum drift: <span class="arithmatex">\(\max|\Delta x(t)|\)</span></p>
+<p><strong>Thermal effects</strong>: Motor heating can cause gearbox expansion and changing friction. Monitor current increase over time.</p>
+<h3 id="endurance-test">Endurance Test</h3>
+<p><strong>Objective</strong>: Validate durability over 10,000 flex-extend cycles.</p>
+<p><strong>Procedure</strong>:
+1. Define cycle trajectory:
+   - Start position <span class="arithmatex">\(x_{start}\)</span> (extended, e.g., 0 counts)
+   - End position <span class="arithmatex">\(x_{end}\)</span> (flexed, e.g., 8000 counts)
+   - Dwell times: <span class="arithmatex">\(t_{start}\)</span>, <span class="arithmatex">\(t_{end}\)</span> (default 0.5 s each)
+2. For cycle <span class="arithmatex">\(i = 1\)</span> to <span class="arithmatex">\(N_{cycles}\)</span> (default 10,000):
+   - Move to <span class="arithmatex">\(x_{start}\)</span>, wait <span class="arithmatex">\(t_{start}\)</span>
+   - Record sensors: position, force, current
+   - Move to <span class="arithmatex">\(x_{end}\)</span>, wait <span class="arithmatex">\(t_{end}\)</span>
+   - Record sensors
+   - Log data every <span class="arithmatex">\(N_{log}\)</span> cycles (e.g., every 10th cycle to reduce data volume)
+3. <strong>Checkpointing</strong>: Save state every 100 cycles to enable resume if interrupted
+4. Monitor degradation metrics:
+   - Efficiency: <span class="arithmatex">\(\eta_i = P_{mech,i} / P_{elec,i}\)</span>
+   - Position error: <span class="arithmatex">\(\Delta x_i = x_{cmd} - x_{actual}\)</span>
+   - Force capability: <span class="arithmatex">\(F_{max,i}\)</span></p>
+<p><strong>Metrics</strong>:
+- Efficiency degradation: <span class="arithmatex">\((\eta_1 - \eta_{10000}) / \eta_1\)</span> (should be &lt; 10%)
+- Mechanical drift: <span class="arithmatex">\(|x_{10000} - x_1|\)</span> (accumulated positioning error)
+- Force loss: <span class="arithmatex">\((F_{1} - F_{10000}) / F_1\)</span></p>
+<p><strong>Expected wear</strong>:
+- Initial bedding-in: 10-20% efficiency drop in first 100 cycles
+- Steady-state: &lt; 1% per 1000 cycles thereafter</p>
+<p><strong>Failure modes</strong>:
+- Tendon fraying: Increased friction, force variation
+- Gearbox wear: Increased backlash, noise
+- Bearing failure: Catastrophic (rare)</p>
+<hr />
+<h2 id="8-validation-criteria">8. Validation Criteria</h2>
+<h3 id="performance-targets">Performance Targets</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Measurement Method</th>
+<th>Acceptance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maximum Force</strong></td>
+<td>50-60 N (5-6 kg)</td>
+<td>Torque Test</td>
+<td>Achieved continuously for 10 s</td>
+</tr>
+<tr>
+<td><strong>Force Stability</strong></td>
+<td>&lt; 2% drop over 30 min</td>
+<td>Static Hold Test</td>
+<td><span class="arithmatex">\(\Delta F / F_0 &lt; 0.02\)</span></td>
+</tr>
+<tr>
+<td><strong>Backlash</strong></td>
+<td>&lt; 5° joint angle (~200 counts)</td>
+<td>Hysteresis Test</td>
+<td><span class="arithmatex">\(\max(\Delta x_i) &lt; 200\)</span></td>
+</tr>
+<tr>
+<td><strong>Stiffness</strong></td>
+<td>&gt; 10 N/mm</td>
+<td>Stiffness Test</td>
+<td><span class="arithmatex">\(k &gt; 10\)</span> N/mm</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>&gt; 40% at nominal torque</td>
+<td>Torque/Efficiency Test</td>
+<td><span class="arithmatex">\(\eta_{peak} &gt; 0.40\)</span></td>
+</tr>
+<tr>
+<td><strong>Endurance</strong></td>
+<td>&lt; 10% efficiency loss over 10k cycles</td>
+<td>Endurance Test</td>
+<td><span class="arithmatex">\(\Delta \eta / \eta_0 &lt; 0.10\)</span></td>
+</tr>
+<tr>
+<td><strong>Position Repeatability</strong></td>
+<td>&lt; 100 counts (~2.5° joint)</td>
+<td>Hysteresis Test</td>
+<td><span class="arithmatex">\(\sigma_{position} &lt; 100\)</span></td>
+</tr>
+<tr>
+<td><strong>Current Limit</strong></td>
+<td>&lt; 1.0 A continuous</td>
+<td>All Tests</td>
+<td>Never exceed safety limit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="safety-limits">Safety Limits</h3>
+<p><strong>Hardware Protection</strong>:
+- <strong>Current limit</strong>: 1.0 A continuous (protects gearbox from overload)
+- <strong>Peak current</strong>: 2.0 A for &lt; 1 s (starting torque)
+- <strong>Force limits</strong>:
+  - Tendon: 200 N max (load cell rating)
+  - Fingertip: 20 N max (safety during manual interaction)
+- <strong>Position limits</strong>: 0-10,000 counts (physical end stops)</p>
+<p><strong>Software Monitoring</strong>:
+- Real-time safety monitor at 10 Hz
+- Auto e-stop on limit violations
+- Watchdog timer: 1 s timeout</p>
+<h3 id="test-report-checklist">Test Report Checklist</h3>
+<p>After completing validation tests, verify:</p>
+<ul>
+<li>[ ] <strong>Torque Test</strong>: Efficiency curve shows <span class="arithmatex">\(\eta_{peak} &gt; 40\%\)</span></li>
+<li>[ ] <strong>Hysteresis Test</strong>: All positions show <span class="arithmatex">\(\Delta x &lt; 200\)</span> counts</li>
+<li>[ ] <strong>Stiffness Test</strong>: System stiffness <span class="arithmatex">\(k &gt; 10\)</span> N/mm</li>
+<li>[ ] <strong>Static Hold Test</strong>: 30-minute hold with &lt; 2% force drop</li>
+<li>[ ] <strong>Endurance Test</strong>: 10,000 cycles completed with &lt; 10% efficiency loss</li>
+<li>[ ] <strong>Data Quality</strong>: All CSV files readable, no missing data</li>
+<li>[ ] <strong>Calibration</strong>: Load cells and encoder calibrations up-to-date</li>
+<li>[ ] <strong>Safety</strong>: No e-stop triggers during normal operation</li>
+</ul>
+<h3 id="failure-analysis">Failure Analysis</h3>
+<p>If validation criteria are <strong>not met</strong>:</p>
+<p><strong>Low Force</strong> (<span class="arithmatex">\(F_{max} &lt; 50\)</span> N):
+- Check motor current limit (increase if thermal margin allows)
+- Verify routing efficiency (minimize friction, pulley count)
+- Inspect gearbox for binding or damage</p>
+<p><strong>Excessive Creep</strong> (<span class="arithmatex">\(\Delta F / F_0 &gt; 2\%\)</span>):
+- Run break-in cycling (100-1000 cycles)
+- Consider stiffer tendon material (steel cable)
+- Implement active force feedback control</p>
+<p><strong>High Backlash</strong> (<span class="arithmatex">\(\Delta x &gt; 200\)</span> counts):
+- Reduce gearbox backlash (consider precision gearbox)
+- Pre-tension tendon (eliminate slack)
+- Use stiffer tendon (reduce <span class="arithmatex">\(\Delta L\)</span>)</p>
+<p><strong>Low Efficiency</strong> (<span class="arithmatex">\(\eta &lt; 40\%\)</span>):
+- Minimize routing friction (PTFE conduits, ball-bearing pulleys)
+- Reduce pulley count
+- Lubricate gearbox (if applicable)</p>
+<p><strong>Endurance Failure</strong> (<span class="arithmatex">\(\Delta \eta &gt; 10\%\)</span> over 10k cycles):
+- Inspect for tendon fraying or pulley wear
+- Check gearbox for particle contamination
+- Verify operating temperature &lt; 60°C</p>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>Pratt, G. A., &amp; Williamson, M. M. (1995). <em>Series elastic actuators</em>. IEEE/RSJ IROS.</li>
+<li>Salisbury, J. K., &amp; Craig, J. J. (1982). <em>Articulated hands: Force control and kinematic issues</em>. IJRR.</li>
+<li>Jacobsen, S. C., et al. (1986). <em>Design of the Utah/MIT dextrous hand</em>. IEEE ICRA.</li>
+<li>Dollar, A. M., &amp; Howe, R. D. (2010). <em>The Highly Adaptive SDM Hand</em>. IJRR.</li>
+<li>Maxon Motor AG. (2023). <em>ECX TORQUE 22 L Catalog</em>. www.maxongroup.com.</li>
+<li>Odhner, L. U., et al. (2014). <em>A compliant, underactuated hand for robust manipulation</em>. IJRR.</li>
+</ol>
+<hr />
+<h2 id="appendix-quick-reference-equations">Appendix: Quick Reference Equations</h2>
+<p><strong>Force Transmission</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(F_{tip} = \frac{\tau_m \cdot r_{spool}}{r_{joint} \cdot GR \cdot \eta}\)</span>\)</span></p>
+<p><strong>Tendon Elongation</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(\Delta L = \frac{F \cdot L}{E \cdot A}\)</span>\)</span></p>
+<p><strong>Stiffness</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(k = \frac{F}{\Delta x}\)</span>\)</span></p>
+<p><strong>Efficiency</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(\eta = \frac{P_{mech}}{P_{elec}} = \frac{F \cdot v}{V \cdot I}\)</span>\)</span></p>
+<p><strong>PID Control</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(u(t) = K_p \cdot e(t) + K_i \int e(t) \, dt + K_d \frac{de(t)}{dt}\)</span>\)</span></p>
+<p><strong>Capstan Friction</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{T_{out}}{T_{in}} = e^{-\mu \theta}\)</span>\)</span></p>
+<p><strong>Motor Torque</strong>:
+<span class="arithmatex">\(<span class="arithmatex">\(\tau_m = K_t \cdot I_{motor}\)</span>\)</span></p>
+<hr />
+<p><em>Document Version: 1.0</em>
+<em>Last Updated: 2025-12-28</em>
+<em>Contact: Test Bench Engineering Team</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/anandvks/test-hub" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
