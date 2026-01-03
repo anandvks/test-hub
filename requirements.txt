@@ -1,0 +1,77 @@
+# Test Bench GUI - Dependencies
+# Tendon-Driven Robotic Hand Validation System
+
+# ============================================================
+# CORE DEPENDENCIES (Required for all platforms)
+# ============================================================
+
+# Numerical computing and data analysis
+numpy>=1.24.0           # Array operations, numerical computations
+scipy>=1.10.0           # Signal processing, curve fitting, scientific computing
+pandas>=2.0.0           # Data analysis, CSV handling, time series
+
+# GUI and visualization
+matplotlib>=3.7.0       # Plotting, real-time graphs, data visualization
+
+# Configuration management
+pyyaml>=6.0            # YAML configuration files (if using YAML instead of JSON)
+
+# ============================================================
+# PLATFORM-SPECIFIC DEPENDENCIES
+# ============================================================
+
+# --- Teensy 4.1 Platform (Serial/USB) ---
+pyserial>=3.5          # Serial communication for Teensy controller
+
+# --- IMX8 Platform (Ethernet/TCP) ---
+# No additional dependencies required (uses standard library socket)
+
+# --- Raspberry Pi Platform (SPI/I2C) ---
+# Uncomment these if using Raspberry Pi platform:
+# spidev>=3.5          # SPI communication
+# smbus2>=0.4.1        # I2C communication (Python 3 compatible)
+
+# ============================================================
+# OPTIONAL DEPENDENCIES
+# ============================================================
+
+# Development and testing
+pytest>=7.0.0          # Unit testing framework
+pytest-cov>=4.0.0      # Test coverage reporting
+pytest-mock>=3.10.0    # Mocking support for pytest
+
+# Advanced data export
+# openpyxl>=3.0.0      # Excel file export
+# xlsxwriter>=3.0.0    # Excel formatting and charting
+
+# Enhanced plotting
+# seaborn>=0.12.0      # Statistical visualization
+# plotly>=5.0.0        # Interactive plots
+
+# Documentation generation
+# sphinx>=5.0.0        # Documentation generator
+# sphinx-rtd-theme>=1.0.0  # ReadTheDocs theme
+
+# ============================================================
+# NOTES
+# ============================================================
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# Platform-Specific Installation:
+#   For Raspberry Pi:
+#     pip install spidev smbus2
+#
+# Python Version:
+#   Requires Python 3.8 or higher
+#   Tested on Python 3.10
+#
+# GUI Requirements:
+#   - tkinter (usually pre-installed with Python)
+#   - X server for GUI display (Linux/macOS)
+#   - No additional GUI libraries needed
+#
+# Mock Platform:
+#   No hardware dependencies required
+#   Perfect for development and testing without physical hardware

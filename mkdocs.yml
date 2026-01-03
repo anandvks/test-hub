@@ -1,0 +1,93 @@
+site_name: Test Bench GUI
+site_description: Tendon-Driven Robotic Hand Validation System
+site_author: Test Bench Team
+site_url: https://github.com/anandvks/test-hub
+
+repo_name: anandvks/test-hub
+repo_url: https://github.com/anandvks/test-hub
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Quick Start: getting-started/quick-start.md
+      - Installation: getting-started/installation.md
+  - User Guide:
+      - Tutorial: user-guide/tutorial.md
+      - Hardware Setup: user-guide/hardware-setup.md
+      - GUI Overview: user-guide/gui-overview.md
+  - Technical Documentation:
+      - Engineering Theory: technical/theory.md
+      - Platform Guide: technical/platform-guide.md
+      - Test Protocols: technical/test-protocols.md
+  - Development:
+      - Contributing: development/contributing.md
+      - Testing: development/testing.md
+      - API Reference: development/api.md
+  - About:
+      - Changelog: about/changelog.md
+      - License: about/license.md
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/anandvks/test-hub
+  version:
+    provider: mike

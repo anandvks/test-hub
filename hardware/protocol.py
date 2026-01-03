@@ -1,0 +1,52 @@
+"""
+Teensy 4.1 Serial Protocol Definitions
+
+Text-based, line-delimited protocol for motor control and sensor reading.
+"""
+
+# Command constants
+CMD_PING = "PING"
+CMD_ENABLE = "ENABLE"
+CMD_DISABLE = "DISABLE"
+CMD_ESTOP = "ESTOP"
+CMD_SETPOS = "SETPOS"
+CMD_SETVEL = "SETVEL"
+CMD_SETTORQ = "SETTORQ"
+CMD_SETCURR = "SETCURR"
+CMD_GETPOS = "GETPOS"
+CMD_GETVEL = "GETVEL"
+CMD_GETCURR = "GETCURR"
+CMD_GETSENSORS = "GETSENSORS"
+CMD_STREAM = "STREAM"
+CMD_SETLIMIT = "SETLIMIT"
+CMD_GETLIMIT = "GETLIMIT"
+CMD_ZERO = "ZERO"
+
+# Advanced control commands
+CMD_SETPID = "SETPID"
+CMD_GETPID = "GETPID"
+CMD_SETPROFILE = "SETPROFILE"
+CMD_GETPROFILE = "GETPROFILE"
+
+# Response constants
+RESP_ACK = "ACK"
+RESP_NACK = "NACK"
+RESP_DATA = "DATA"
+
+# Error codes
+ERR_TIMEOUT = "TIMEOUT"
+ERR_LIMIT = "LIMIT"
+ERR_INVALID = "INVALID"
+ERR_DISABLED = "DISABLED"
+ERR_COMM_ERROR = "COMM_ERROR"
+
+# Limit types
+LIMIT_CURR = "CURR"
+LIMIT_POS = "POS"
+LIMIT_FORCE = "FORCE"
+
+# Protocol settings
+LINE_TERMINATOR = '\n'
+COMMAND_TIMEOUT = 0.5  # seconds
+RESPONSE_TIMEOUT = 1.0  # seconds
+WATCHDOG_TIMEOUT = 1.0  # seconds
