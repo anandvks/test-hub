@@ -1,14 +1,12 @@
-# Test Bench GUI - Tendon-Driven Robotic Hand
+# Test Bench GUI
 
-**Comprehensive validation platform for tendon-driven robotic hand systems**
-
-Target: 5-6 kg static hold with Maxon ECX TORQUE 22 L motor + GPX 22 HP gearbox (231:1 reduction)
+**Comprehensive validation platform for tendon-driven mechatronic systems**
 
 ---
 
 ## 🎯 Project Overview
 
-This is a professional test bench control system for validating tendon-driven finger mechanisms. It provides:
+This is a professional test bench control system for validating tendon-driven mechanisms. It provides:
 
 - **Platform-agnostic architecture** - Supports Teensy 4.1, IMX8, Raspberry Pi, and simulation
 - **5 automated test protocols** - Torque, Hysteresis, Stiffness, Static Hold, Endurance
@@ -149,60 +147,47 @@ The documentation site works without an HTTP server and includes links to all gu
 
 ## 🔧 Hardware Setup
 
-### Bill of Materials
+### System Requirements
 
-**Motor & Gearbox:**
-- Maxon ECX TORQUE 22 L (brushless DC motor)
-- GPX 22 HP planetary gearbox (231:1 reduction)
-- EPOS4 motor controller (or compatible)
+**Motor System:**
+- DC motor with gearbox (suitable for tendon-driven applications)
+- Motor controller/driver
+- Position feedback (encoder)
 
 **Sensors:**
-- 2x Load cells (tendon + fingertip force measurement)
-  - HX711 or ADS1256 ADC
-  - Calibrated range: 0-50 N
-- AS5600 magnetic encoder (joint angle measurement)
-  - 12-bit resolution (4096 counts/rev)
+- Load cells for force measurement (tendon and fingertip)
+- ADC interface for sensor data acquisition
 
-**Controller (choose one):**
-- Teensy 4.1 (Serial/USB) - **Recommended for beginners**
-- IMX8 (Ethernet/TCP)
-- Raspberry Pi 4 (SPI/I2C)
+**Control Platform** (choose one):
+- **Teensy 4.1** (Serial/USB) - Recommended for development
+- **IMX8** (Ethernet/TCP) - For production systems
+- **Raspberry Pi** (SPI/I2C) - For embedded applications
+- **Mock** (Simulator) - For testing without hardware
 
 **Power:**
-- 24V DC power supply (motor driver)
-- 5V USB power (Teensy) or dedicated 5V supply
+- Appropriate DC power supply for motor driver
+- 5V power for microcontroller
 
-### Wiring Diagram
+### Basic Architecture
 
 ```
-┌──────────────┐
-│  24V Supply  │
-└──────┬───────┘
-       │
-   ┌───▼────────┐      Serial/USB       ┌──────────┐
-   │   EPOS4    ├────────────────────────►  Teensy  │
-   │   Motor    │                        │   4.1    │
-   │  Controller│◄───────────────────────┤          │
-   └─────┬──────┘    PWM/Commands        └────┬─────┘
-         │                                     │
-    ┌────▼─────┐                          ┌───▼────┐
-    │  Maxon   │                          │ Load   │
-    │ECX 22 L  │                          │ Cells  │
-    │  Motor   │                          │(HX711) │
-    └──────────┘                          └────────┘
-         │
-    Tendon/Cable → Finger Mechanism
+Power Supply → Motor Driver → DC Motor
+                    ↕              ↓
+            Microcontroller ← Sensors (Force, Position)
+                    ↓
+              PC (Test Bench GUI)
 ```
 
-### Safety Setup
+### Safety Considerations
 
-**Critical safety measures:**
+Implement appropriate safety measures:
+- Current limiting
+- Position limits
+- Force thresholds
+- Emergency stop functionality
+- Watchdog timers
 
-1. **Current Limit**: Set to 1.0 A max (configured in motor driver)
-2. **Position Limits**: Define min/max encoder counts
-3. **Force Limits**: Set max tendon/tip forces
-4. **Emergency Stop**: Wire physical e-stop button to Teensy interrupt pin
-5. **Watchdog Timer**: 1-second timeout → auto-disable motor
+For detailed hardware setup, see the [Hardware Setup Guide](https://anandvks.github.io/test-hub/user-guide/hardware-setup/).
 
 ---
 
