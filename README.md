@@ -131,17 +131,30 @@ pip install -r requirements.txt
 
 ### Documentation
 
-View engineering documentation:
+**Online (Recommended):**
 
-**Online (works offline):**
+Visit the live documentation at: **https://anandvks.github.io/test-hub/**
+
+**Local Development Server:**
+
+Use the convenient starter script:
+
 ```bash
-# Simply open docs/index.html in your browser
-open docs/index.html        # macOS
-xdg-open docs/index.html    # Linux
-start docs/index.html       # Windows
+# Linux/macOS
+./docs-serve.sh
+
+# Windows
+docs-serve.bat
 ```
 
-The documentation site works without an HTTP server and includes links to all guides.
+Or manually:
+```bash
+pip install mkdocs mkdocs-material
+mkdocs serve
+# Open http://127.0.0.1:8000/
+```
+
+See [DOCUMENTATION.md](DOCUMENTATION.md) for detailed documentation setup guide.
 
 ---
 
