@@ -1,6 +1,6 @@
 # Test Bench GUI
 
-**Comprehensive validation platform for tendon-driven robotic hand systems**
+**Comprehensive validation platform for tendon-driven mechatronic systems**
 
 [![Phase 7 Complete](https://img.shields.io/badge/Phase-7%20Complete-success)](https://github.com/anandvks/test-hub)
 [![Platform Abstraction](https://img.shields.io/badge/Platform-Abstraction%20Ready-blue)](https://github.com/anandvks/test-hub)
@@ -10,15 +10,23 @@
 
 ## Overview
 
-This is a professional test bench control system for validating tendon-driven finger mechanisms. Designed for precision testing with the Maxon ECX TORQUE 22 L motor and GPX 22 HP gearbox (231:1 reduction), targeting 5-6 kg static hold force.
+A professional test bench control system for validating tendon-driven mechanisms with precision motor control and high-reduction gearboxes, designed for static hold forces up to 5-6 kg.
+
+---
 
 ## Key Features
 
 - **Platform-Agnostic Architecture** - Supports Teensy 4.1, IMX8, Raspberry Pi, and simulation modes
+
 - **5 Automated Test Protocols** - Torque, Hysteresis, Stiffness, Static Hold, and Endurance testing
+
 - **Real-Time Visualization** - Live plotting at 50-100 Hz sample rates
+
 - **Comprehensive Data Management** - Session-based organization with CSV/JSON export
+
 - **Multi-Layer Safety System** - Hardware, firmware, and software protection
+
+---
 
 ## Quick Links
 
@@ -58,6 +66,8 @@ This is a professional test bench control system for validating tendon-driven fi
 
 </div>
 
+---
+
 ## System Highlights
 
 | Feature | Specification |
@@ -67,6 +77,8 @@ This is a professional test bench control system for validating tendon-driven fi
 | **GUI Tabs** | 7 functional interfaces |
 | **Data Rate** | 50-100 Hz real-time |
 | **Target Force** | 5-6 kg static hold |
+
+---
 
 ## Architecture
 
@@ -81,6 +93,8 @@ graph TD
     B --> E
 ```
 
+---
+
 ## Status
 
 - ✅ Phase 7 Complete - Platform abstraction and GUI
@@ -88,6 +102,8 @@ graph TD
 - ✅ Comprehensive test protocols (5 automated tests)
 - ✅ Real-time data visualization
 - ✅ Production-ready codebase
+
+---
 
 ## Next Steps
 

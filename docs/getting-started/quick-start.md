@@ -2,11 +2,15 @@
 
 Get up and running with Test Bench GUI in 30 minutes.
 
+---
+
 ## Prerequisites
 
 - **OS**: Linux (Ubuntu 20.04+), macOS, or Windows 10+
 - **Python**: 3.8 or later
 - **Hardware**: USB port (Teensy), Ethernet (IMX8), or GPIO (Raspberry Pi)
+
+---
 
 ## Installation
 
@@ -24,11 +28,14 @@ pip install -r requirements.txt
 ```
 
 **Core dependencies:**
+
 - numpy >= 1.24.0
 - scipy >= 1.10.0
 - pandas >= 2.0.0
 - matplotlib >= 3.7.0
 - pyserial >= 3.5 (for Teensy)
+
+---
 
 ## Configuration
 
@@ -45,10 +52,13 @@ Edit `config.json` to choose your hardware platform:
 ```
 
 **Available platforms:**
+
 - `teensy` - Teensy 4.1 (Serial/USB)
 - `imx8` - IMX8 processor (Ethernet/TCP)
 - `rpi` - Raspberry Pi (SPI/I2C)
 - `mock` - Simulator (no hardware needed)
+
+---
 
 ## First Test
 
@@ -93,11 +103,15 @@ python3 main.py
    - Current vs. Time
 4. Export data as CSV/JSON/PNG
 
+---
+
 ## Next Steps
 
 - Read the [Tutorial](../user-guide/tutorial.md) for detailed usage
 - Learn about [Test Protocols](../technical/test-protocols.md)
 - Explore [Hardware Setup](../user-guide/hardware-setup.md) for wiring diagrams
+
+---
 
 ## Troubleshooting
 
@@ -106,6 +120,7 @@ python3 main.py
 **Problem**: "Failed to connect to Teensy"
 
 **Solutions:**
+
 - Check USB cable connection
 - Verify correct port selected (click Refresh)
 - Linux: Add user to dialout group: `sudo usermod -a -G dialout $USER`
@@ -116,15 +131,19 @@ python3 main.py
 **Problem**: Motor enabled but doesn't move
 
 **Solutions:**
+
 - Check 24V power supply to motor driver
 - Verify motor driver enable signal
 - Check current limit not set too low
 - Review safety limits (position, force)
 - Verify PID parameters configured
 
+---
+
 ## Support
 
 For more help, see:
+
 - [Tutorial](../user-guide/tutorial.md) - Complete user guide with detailed troubleshooting
 - [GUI Overview](../user-guide/gui-overview.md) - Interface guide
 - [GitHub Issues](https://github.com/anandvks/test-hub/issues) - Report bugs
