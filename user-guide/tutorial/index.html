@@ -2252,9 +2252,9 @@
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#1-prerequisites">Prerequisites</a></li>
-<li><a href="#2-first-run---connection-and-calibration">First Run - Connection and Calibration</a></li>
-<li><a href="#3-manual-control---verify-system">Manual Control - Verify System</a></li>
-<li><a href="#4-automated-test---static-hold-validation">Automated Test - Static Hold Validation</a></li>
+<li><a href="#2-first-run-connection-and-calibration">First Run - Connection and Calibration</a></li>
+<li><a href="#3-manual-control-verify-system">Manual Control - Verify System</a></li>
+<li><a href="#4-automated-test-static-hold-validation">Automated Test - Static Hold Validation</a></li>
 <li><a href="#5-review-results">Review Results</a></li>
 <li><a href="#6-troubleshooting">Troubleshooting</a></li>
 </ol>
@@ -2263,14 +2263,14 @@
 <h3 id="hardware-requirements">Hardware Requirements</h3>
 <p>Ensure you have the following components connected:</p>
 <p><strong>Motor Assembly</strong>:
-- [ ] Maxon ECX TORQUE 22 L motor
-- [ ] Maxon GPX 22 HP gearbox (231:1)
-- [ ] Maxon ESCON 24/2 motor driver
+- [ ] DC brushless motor with encoder
+- [ ] Precision gearbox (high reduction ratio)
+- [ ] Compatible motor driver/controller
 - [ ] 24V power supply (2-3A minimum)</p>
 <p><strong>Sensors</strong>:
 - [ ] Tendon load cell (0-200 N range) connected to ADC
 - [ ] Fingertip load cell (0-20 N range) connected to ADC
-- [ ] AS5600 magnetic encoder for joint angle (optional)</p>
+- [ ] Magnetic encoder for joint angle measurement (optional)</p>
 <p><strong>Controller</strong>:
 - [ ] Teensy 4.1 microcontroller (or IMX8, Raspberry Pi, Mock for simulation)
 - [ ] USB cable for serial communication</p>
@@ -2429,7 +2429,7 @@
 <p><strong>Note</strong>: Use smaller weights for tip calibration (0.2-1.0 kg range).</p>
 <p><strong>Calibration data saved to</strong>: <code>data/calibrations/load_cell_tip.json</code></p>
 <h3 id="step-26-calibrate-joint-encoder-optional">Step 2.6: Calibrate Joint Encoder (Optional)</h3>
-<p>If using AS5600 magnetic encoder for joint angle:</p>
+<p>If using a magnetic encoder for joint angle measurement:</p>
 <ol>
 <li>Move finger to <strong>neutral position</strong> (e.g., fully extended)</li>
 <li>Click <strong>[Zero]</strong> under Joint Encoder</li>
@@ -2921,7 +2921,7 @@
 - <strong>PID control</strong>: Ensure position controller is active (not just torque mode)</p>
 <p><strong>Problem</strong>: "High backlash (&gt;200 counts) in hysteresis test"</p>
 <p><strong>Causes &amp; Solutions</strong>:
-- <strong>Gearbox</strong>: Inherent backlash of GPX 22 HP is ~1.5° (acceptable)
+- <strong>Gearbox</strong>: Check for inherent backlash in your gearbox (typically 1-2°)
 - <strong>Tendon</strong>: Pre-tension to eliminate slack
 - <strong>Compliance</strong>: Shorten tendon routing to reduce stretch</p>
 <h3 id="data-logging-issues">Data Logging Issues</h3>
@@ -2977,9 +2977,9 @@
 <li>
 <p><strong>Documentation</strong>:</p>
 </li>
-<li>Read <a href="THEORY.md">THEORY.md</a> for engineering background</li>
-<li>Read <a href="PLATFORM_GUIDE.md">PLATFORM_GUIDE.md</a> to add new hardware platforms</li>
-<li>Check <a href="../PROJECT_STATUS.md">PROJECT_STATUS.md</a> for system architecture</li>
+<li>Read <a href="../../technical/theory/">THEORY.md</a> for engineering background</li>
+<li>Read <a href="../../technical/platform-guide/">PLATFORM_GUIDE.md</a> to add new hardware platforms</li>
+<li>Check <a href="../../archive/PROJECT_STATUS/">PROJECT_STATUS.md</a> for system architecture</li>
 </ol>
 <hr />
 <h2 id="quick-reference-commands">Quick Reference Commands</h2>
@@ -3009,7 +3009,7 @@
 <h2 id="support">Support</h2>
 <p>If you encounter issues not covered in this tutorial:</p>
 <ol>
-<li>Check <a href="THEORY.md">THEORY.md</a> Section 8 for validation criteria</li>
+<li>Check <a href="../../technical/theory/">THEORY.md</a> Section 8 for validation criteria</li>
 <li>Review <a href="#6-troubleshooting">Troubleshooting</a> section</li>
 <li>Inspect Python console output for error messages</li>
 <li>Check firmware serial monitor for communication issues</li>
