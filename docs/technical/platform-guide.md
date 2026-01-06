@@ -7,13 +7,12 @@ Complete guide for adding new hardware platform support to the Test Bench GUI.
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Architecture](#architecture)
-3. [Hardware Controller Interface](#hardware-controller-interface)
-4. [Supported Platforms](#supported-platforms)
-5. [Adding a New Platform](#adding-a-new-platform)
-6. [Protocol Examples](#protocol-examples)
-7. [Testing Your Controller](#testing-your-controller)
-8. [Best Practices](#best-practices)
+2. [Hardware Controller Interface](#hardware-controller-interface)
+3. [Supported Platforms](#supported-platforms)
+4. [Adding a New Platform](#adding-a-new-platform)
+5. [Protocol Examples](#protocol-examples)
+6. [Testing Your Controller](#testing-your-controller)
+7. [Best Practices](#best-practices)
 
 ---
 

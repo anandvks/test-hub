@@ -125,6 +125,6 @@ python3 main.py
 ## Support
 
 For more help, see:
-- [Tutorial](../user-guide/tutorial.md) - Complete user guide
-- [Troubleshooting](../user-guide/gui-overview.md#troubleshooting) - Common issues
+- [Tutorial](../user-guide/tutorial.md) - Complete user guide with detailed troubleshooting
+- [GUI Overview](../user-guide/gui-overview.md) - Interface guide
 - [GitHub Issues](https://github.com/anandvks/test-hub/issues) - Report bugs

@@ -9,9 +9,9 @@ This tutorial guides you through the complete workflow: calibration → static h
 ## Table of Contents
 
 1. [Prerequisites](#1-prerequisites)
-2. [First Run - Connection and Calibration](#2-first-run---connection-and-calibration)
-3. [Manual Control - Verify System](#3-manual-control---verify-system)
-4. [Automated Test - Static Hold Validation](#4-automated-test---static-hold-validation)
+2. [First Run - Connection and Calibration](#2-first-run-connection-and-calibration)
+3. [Manual Control - Verify System](#3-manual-control-verify-system)
+4. [Automated Test - Static Hold Validation](#4-automated-test-static-hold-validation)
 5. [Review Results](#5-review-results)
 6. [Troubleshooting](#6-troubleshooting)
 
@@ -24,15 +24,15 @@ This tutorial guides you through the complete workflow: calibration → static h
 Ensure you have the following components connected:
 
 **Motor Assembly**:
-- [ ] Maxon ECX TORQUE 22 L motor
-- [ ] Maxon GPX 22 HP gearbox (231:1)
-- [ ] Maxon ESCON 24/2 motor driver
+- [ ] DC brushless motor with encoder
+- [ ] Precision gearbox (high reduction ratio)
+- [ ] Compatible motor driver/controller
 - [ ] 24V power supply (2-3A minimum)
 
 **Sensors**:
 - [ ] Tendon load cell (0-200 N range) connected to ADC
 - [ ] Fingertip load cell (0-20 N range) connected to ADC
-- [ ] AS5600 magnetic encoder for joint angle (optional)
+- [ ] Magnetic encoder for joint angle measurement (optional)
 
 **Controller**:
 - [ ] Teensy 4.1 microcontroller (or IMX8, Raspberry Pi, Mock for simulation)
@@ -233,7 +233,7 @@ Repeat the same procedure for the fingertip load cell:
 
 ### Step 2.6: Calibrate Joint Encoder (Optional)
 
-If using AS5600 magnetic encoder for joint angle:
+If using a magnetic encoder for joint angle measurement:
 
 1. Move finger to **neutral position** (e.g., fully extended)
 2. Click **[Zero]** under Joint Encoder
@@ -771,7 +771,7 @@ Attachments:
 **Problem**: "High backlash (>200 counts) in hysteresis test"
 
 **Causes & Solutions**:
-- **Gearbox**: Inherent backlash of GPX 22 HP is ~1.5° (acceptable)
+- **Gearbox**: Check for inherent backlash in your gearbox (typically 1-2°)
 - **Tendon**: Pre-tension to eliminate slack
 - **Compliance**: Shorten tendon routing to reduce stretch
 
@@ -830,9 +830,9 @@ Congratulations! You've completed the quick start tutorial. You can now:
    - Cycle testing (automated flex-extend sequences)
 
 4. **Documentation**:
-   - Read [THEORY.md](THEORY.md) for engineering background
-   - Read [PLATFORM_GUIDE.md](PLATFORM_GUIDE.md) to add new hardware platforms
-   - Check [PROJECT_STATUS.md](../PROJECT_STATUS.md) for system architecture
+   - Read [THEORY.md](../technical/theory.md) for engineering background
+   - Read [PLATFORM_GUIDE.md](../technical/platform-guide.md) to add new hardware platforms
+   - Check [PROJECT_STATUS.md](../archive/PROJECT_STATUS.md) for system architecture
 
 ---
 
@@ -877,7 +877,7 @@ ls -lh data/sessions/
 
 If you encounter issues not covered in this tutorial:
 
-1. Check [THEORY.md](THEORY.md) Section 8 for validation criteria
+1. Check [THEORY.md](../technical/theory.md) Section 8 for validation criteria
 2. Review [Troubleshooting](#6-troubleshooting) section
 3. Inspect Python console output for error messages
 4. Check firmware serial monitor for communication issues

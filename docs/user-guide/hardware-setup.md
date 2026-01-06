@@ -83,7 +83,7 @@ Emergency Stop Circuit
 
 ## Calibration
 
-See the [Tutorial](tutorial.md#calibration) for step-by-step calibration procedures.
+See the [Tutorial](tutorial.md#2-first-run-connection-and-calibration) for step-by-step calibration procedures.
 
 ## Next Steps
 
