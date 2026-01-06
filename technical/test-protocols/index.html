@@ -1917,12 +1917,16 @@
 
 <h1 id="test-protocols">Test Protocols</h1>
 <p>Detailed documentation of the 5 automated test protocols.</p>
+<hr />
 <h2 id="overview">Overview</h2>
-<p>All tests inherit from <code>BaseTest</code> and provide:
-- Configurable parameters
-- Progress callbacks
-- Duration estimation
-- Result summarization</p>
+<p>All tests inherit from <code>BaseTest</code> and provide:</p>
+<ul>
+<li>Configurable parameters</li>
+<li>Progress callbacks</li>
+<li>Duration estimation</li>
+<li>Result summarization</li>
+</ul>
+<hr />
 <h2 id="1-torque-efficiency-test">1. Torque Efficiency Test</h2>
 <h3 id="purpose">Purpose</h3>
 <p>Measure efficiency of the tendon transmission system across the operating range.</p>
@@ -1946,6 +1950,7 @@
 <li>Average efficiency</li>
 <li>Recommendations</li>
 </ul>
+<hr />
 <h2 id="2-hysteresis-test">2. Hysteresis Test</h2>
 <h3 id="purpose_1">Purpose</h3>
 <p>Quantify backlash and compliance in the transmission system.</p>
@@ -1970,6 +1975,7 @@
 <li>Energy loss per cycle</li>
 <li>Compliance (N/mm)</li>
 </ul>
+<hr />
 <h2 id="3-stiffness-test">3. Stiffness Test</h2>
 <h3 id="purpose_2">Purpose</h3>
 <p>Measure effective stiffness of the finger mechanism.</p>
@@ -1994,6 +2000,7 @@
 <li>Force-deflection curve</li>
 <li>Recommended operating range</li>
 </ul>
+<hr />
 <h2 id="4-static-hold-test">4. Static Hold Test</h2>
 <h3 id="purpose_3">Purpose</h3>
 <p>Validate ability to maintain constant force over time (critical for grasping).</p>
@@ -2018,6 +2025,7 @@
 <li>Maximum deviation</li>
 <li>Control performance metrics</li>
 </ul>
+<hr />
 <h2 id="5-endurance-test">5. Endurance Test</h2>
 <h3 id="purpose_4">Purpose</h3>
 <p>Long-term wear testing under repeated loading cycles.</p>
@@ -2045,6 +2053,7 @@
 <li>Failure modes (if any)</li>
 <li>Remaining life estimate</li>
 </ul>
+<hr />
 <h2 id="custom-test-development">Custom Test Development</h2>
 <h3 id="creating-a-new-test">Creating a New Test</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">protocols.base_test</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTest</span>
@@ -2078,6 +2087,7 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="s1">&#39;my_custom&#39;</span><span class="p">:</span> <span class="n">MyCustomTest</span><span class="p">(</span><span class="n">hardware</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
 </code></pre></div>
+<hr />
 <h2 id="next-steps">Next Steps</h2>
 <ul>
 <li><a href="../../user-guide/tutorial/">Tutorial</a> - Run tests step-by-step</li>

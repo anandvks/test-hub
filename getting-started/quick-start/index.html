@@ -1607,12 +1607,14 @@
 
 <h1 id="quick-start">Quick Start</h1>
 <p>Get up and running with Test Bench GUI in 30 minutes.</p>
+<hr />
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li><strong>OS</strong>: Linux (Ubuntu 20.04+), macOS, or Windows 10+</li>
 <li><strong>Python</strong>: 3.8 or later</li>
 <li><strong>Hardware</strong>: USB port (Teensy), Ethernet (IMX8), or GPIO (Raspberry Pi)</li>
 </ul>
+<hr />
 <h2 id="installation">Installation</h2>
 <h3 id="1-clone-repository">1. Clone Repository</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/anandvks/test-hub.git
@@ -1621,12 +1623,15 @@
 <h3 id="2-install-dependencies">2. Install Dependencies</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
-<p><strong>Core dependencies:</strong>
-- numpy &gt;= 1.24.0
-- scipy &gt;= 1.10.0
-- pandas &gt;= 2.0.0
-- matplotlib &gt;= 3.7.0
-- pyserial &gt;= 3.5 (for Teensy)</p>
+<p><strong>Core dependencies:</strong></p>
+<ul>
+<li>numpy &gt;= 1.24.0</li>
+<li>scipy &gt;= 1.10.0</li>
+<li>pandas &gt;= 2.0.0</li>
+<li>matplotlib &gt;= 3.7.0</li>
+<li>pyserial &gt;= 3.5 (for Teensy)</li>
+</ul>
+<hr />
 <h2 id="configuration">Configuration</h2>
 <h3 id="select-platform">Select Platform</h3>
 <p>Edit <code>config.json</code> to choose your hardware platform:</p>
@@ -1636,11 +1641,14 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
 </code></pre></div>
-<p><strong>Available platforms:</strong>
-- <code>teensy</code> - Teensy 4.1 (Serial/USB)
-- <code>imx8</code> - IMX8 processor (Ethernet/TCP)
-- <code>rpi</code> - Raspberry Pi (SPI/I2C)
-- <code>mock</code> - Simulator (no hardware needed)</p>
+<p><strong>Available platforms:</strong></p>
+<ul>
+<li><code>teensy</code> - Teensy 4.1 (Serial/USB)</li>
+<li><code>imx8</code> - IMX8 processor (Ethernet/TCP)</li>
+<li><code>rpi</code> - Raspberry Pi (SPI/I2C)</li>
+<li><code>mock</code> - Simulator (no hardware needed)</li>
+</ul>
+<hr />
 <h2 id="first-test">First Test</h2>
 <h3 id="1-launch-gui">1. Launch GUI</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>main.py
@@ -1680,33 +1688,42 @@
 <li>Current vs. Time</li>
 <li>Export data as CSV/JSON/PNG</li>
 </ol>
+<hr />
 <h2 id="next-steps">Next Steps</h2>
 <ul>
 <li>Read the <a href="../../user-guide/tutorial/">Tutorial</a> for detailed usage</li>
 <li>Learn about <a href="../../technical/test-protocols/">Test Protocols</a></li>
 <li>Explore <a href="../../user-guide/hardware-setup/">Hardware Setup</a> for wiring diagrams</li>
 </ul>
+<hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="connection-issues">Connection Issues</h3>
 <p><strong>Problem</strong>: "Failed to connect to Teensy"</p>
-<p><strong>Solutions:</strong>
-- Check USB cable connection
-- Verify correct port selected (click Refresh)
-- Linux: Add user to dialout group: <code>sudo usermod -a -G dialout $USER</code>
-- Check Teensy firmware is loaded</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Check USB cable connection</li>
+<li>Verify correct port selected (click Refresh)</li>
+<li>Linux: Add user to dialout group: <code>sudo usermod -a -G dialout $USER</code></li>
+<li>Check Teensy firmware is loaded</li>
+</ul>
 <h3 id="motor-not-moving">Motor Not Moving</h3>
 <p><strong>Problem</strong>: Motor enabled but doesn't move</p>
-<p><strong>Solutions:</strong>
-- Check 24V power supply to motor driver
-- Verify motor driver enable signal
-- Check current limit not set too low
-- Review safety limits (position, force)
-- Verify PID parameters configured</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Check 24V power supply to motor driver</li>
+<li>Verify motor driver enable signal</li>
+<li>Check current limit not set too low</li>
+<li>Review safety limits (position, force)</li>
+<li>Verify PID parameters configured</li>
+</ul>
+<hr />
 <h2 id="support">Support</h2>
-<p>For more help, see:
-- <a href="../../user-guide/tutorial/">Tutorial</a> - Complete user guide with detailed troubleshooting
-- <a href="../../user-guide/gui-overview/">GUI Overview</a> - Interface guide
-- <a href="https://github.com/anandvks/test-hub/issues">GitHub Issues</a> - Report bugs</p>
+<p>For more help, see:</p>
+<ul>
+<li><a href="../../user-guide/tutorial/">Tutorial</a> - Complete user guide with detailed troubleshooting</li>
+<li><a href="../../user-guide/gui-overview/">GUI Overview</a> - Interface guide</li>
+<li><a href="https://github.com/anandvks/test-hub/issues">GitHub Issues</a> - Report bugs</li>
+</ul>
 
 
 
